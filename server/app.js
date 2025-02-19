@@ -26,7 +26,6 @@ import { socketAuthenticator } from "./middlewares/auth.js";
 import userRoute from "./routes/user.js";
 import chatRoute from "./routes/chat.js";
 import adminRoute from "./routes/admin.js";
-import path from 'path';
 
 // Load environment variables
 dotenv.config({
@@ -39,8 +38,6 @@ const envMode = process.env.NODE_ENV?.trim() || "PRODUCTION";
 const adminSecretKey = process.env.ADMIN_SECRET_KEY || "adsasdsdfsdfsdfd";
 const userSocketIDs = new Map();
 const onlineUsers = new Set();
-
-const _dirname = path.resolve();
 
 // Connect to MongoDB
 connectDB(mongoURI);
@@ -159,11 +156,6 @@ io.on("connection", (socket) => {
 // Error middleware
 app.use(errorMiddleware);
 
-app.use(express.static(path.join(_dirname,"/frontend/dist")));
-app.get('*',(_,res)=>{
-  res.sendFile(path.resolve(_dirname,"frontend","dist","index.html"));
-
-})
 // Start server||
 server.listen(port, () => {
   console.log(`Server is running on port ${port} in ${envMode} Mode`);
