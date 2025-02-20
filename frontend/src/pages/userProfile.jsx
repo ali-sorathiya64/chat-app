@@ -8,7 +8,7 @@ const UserProfileUpdate = () => {
   const [previewAvatar, setPreviewAvatar] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const API_BASE_URL = "http://localhost:3000/api/v1/user"; // Replace with your backend URL if needed
+  const API_BASE_URL = "https://chat-app-backend-vfs6.onrender.com/api/v1/user"; // Replace with your backend URL if needed
 
   useEffect(() => {
     const fetchProfile = async () => {
